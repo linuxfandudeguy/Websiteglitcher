@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glitch Free Scroll</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .instructions {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Glitch Free Scroll</h2>
+    <p>Enter the link of the website you want to embed in the iframe below:</p>
+    <input type="text" id="websiteInput" placeholder="Enter website link">
+    <button id="moveButton">Free Move</button>
+    <div class="instructions">
+      <p>Once you've made your glitched website, scroll up and then go in the direction that this arrow is pointing &gt; until you see the content of the website you have glitched.</p>
+    </div>
+  </div>
+  <script>
+    document.getElementById('moveButton').addEventListener('click', function() {
+      var websiteLink = document.getElementById('websiteInput').value.trim();
+      if (websiteLink) {
+        openBlankPage(websiteLink);
+      }
+    });
+
+    function openBlankPage(websiteLink) {
+      var newWindow = window.open('about:blank');
+      newWindow.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dynamic Iframe</title></head><body style="margin: 0;"><iframe src="' + websiteLink + '" style="border: 0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="10000px" width="10000px" allowfullscreen></iframe></body></html>');
+    }
+  </script>
+</body>
+</html>
